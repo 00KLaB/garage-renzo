@@ -1,7 +1,13 @@
 const app = require("./src/app");
 const dotenv = require("dotenv");
 const db = require("./src/config/db");
+const cors = require("cors");
 const { fill } = require("pdfkit");
+
+app.use(cors({
+  origin: "https://garage-renzo-1.onrender.com",
+  credentials: true
+}));
 
 db.getConnection()
   .then(conn => {
