@@ -212,7 +212,7 @@ export default function BookingCard({
         <Button
           onClick={() =>
             window.open(
-              `https://garage-renzo.onrender.com/api/reports/booking/${booking.id}`
+              `http://localhost:5000/api/reports/booking/${booking.id}`
             )
           }
         >
