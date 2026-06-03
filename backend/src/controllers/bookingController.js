@@ -171,3 +171,55 @@ exports.updateStatus =
     }
 
   };
+
+  exports.updateBooking =
+  async (req, res) => {
+
+    try {
+
+      const { id } =
+        req.params;
+
+      const {
+        booking_date,
+        booking_time,
+        service,
+        notes,
+        service_price
+      } = req.body;
+
+      await db.query(
+        `
+        UPDATE bookings
+        SET
+          booking_date = ?,
+          booking_time = ?,
+          service = ?,
+          notes = ?,
+          service_price = ?
+        WHERE id = ?
+        `,
+        [
+          booking_date,
+          booking_time,
+          service,
+          notes,
+          service_price,
+          id
+        ]
+      );
+
+      res.json({
+        message:
+          "Reserva atualizada"
+      });
+
+    } catch (err) {
+
+      res.status(500).json({
+        error: err.message
+      });
+
+    }
+
+  };
