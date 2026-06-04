@@ -8,6 +8,24 @@ import BookingCard from "../components/BookingCard";
 export default function Bookings() {
   const [bookings, setBookings] = useState([]);
 
+  const handleUpdate = (
+  id,
+  updatedData
+) => {
+
+  setBookings((prev) =>
+    prev.map((booking) =>
+      booking.id === id
+        ? {
+            ...booking,
+            ...updatedData,
+          }
+        : booking
+    )
+  );
+
+};
+
   const [search, setSearch] = useState("");
 
   const [statusFilter, setStatusFilter] =
@@ -214,6 +232,7 @@ export default function Bookings() {
               onDelete={
                 deleteBooking
               }
+              onUpdate={handleUpdate}
             />
           )
         )}
