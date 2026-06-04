@@ -1,9 +1,60 @@
+import api from "../api/axios";
+import { useState } from "react";
 import Button from "./Button";
 
 export default function BookingCard({
   booking,
   onDelete,
 }) {
+
+  const saveBooking = async () => {
+
+  try {
+
+    await api.put(
+      `/bookings/${booking.id}`,
+      formData
+    );
+
+    alert(
+      "Reserva atualizada com sucesso"
+    );
+
+    window.location.reload();
+
+  } catch (err) {
+
+    console.error(err);
+
+    alert(
+      "Erro ao atualizar reserva"
+    );
+
+  }
+
+};
+
+  const [editing, setEditing] =
+  useState(false);
+
+  const [formData, setFormData] =
+  useState({
+    booking_date:
+      booking.booking_date
+        ?.split("T")[0],
+
+    booking_time:
+      booking.booking_time,
+
+    service:
+      booking.service || "",
+
+    notes:
+      booking.notes || "",
+
+    service_price:
+      booking.service_price || 0,
+  });
 
   const statusColors = {
   pending:
@@ -120,85 +171,225 @@ export default function BookingCard({
       </div>
 
       {/* DATA */}
-      <div
-        className="
-          flex
-          gap-6
-        "
-      >
+      {editing ? (
 
-        <div>
+  <div className="space-y-4">
 
-          <p className="text-zinc-500">
-            Data
-          </p>
+    <input
+      type="date"
+      value={
+  formData.booking_date
+}
 
-          <h3 className="text-white">
-            {new Date(
-              booking.booking_date
-            ).toLocaleDateString()}
-          </h3>
+onChange={(e) =>
+  setFormData({
+    ...formData,
+    booking_date:
+      e.target.value,
+  })
+}
+      className="
+        w-full
+        bg-zinc-800
+        border
+        border-zinc-700
+        rounded-xl
+        p-3
+        text-white
+      "
+    />
 
-        </div>
+    <input
+      type="time"
+      value={
+  formData.booking_time
+}
 
-        <div>
+onChange={(e) =>
+  setFormData({
+    ...formData,
+    booking_time:
+      e.target.value,
+  })
+}
+      className="
+        w-full
+        bg-zinc-800
+        border
+        border-zinc-700
+        rounded-xl
+        p-3
+        text-white
+      "
+    />
 
-          <p className="text-zinc-500">
-            Hora
-          </p>
+  </div>
 
-          <h3 className="text-white">
-            {booking.booking_time}
-          </h3>
+) : (
 
-        </div>
+  <div
+    className="
+      flex
+      gap-6
+    "
+  >
 
-      </div>
+    <div>
+
+      <p className="text-zinc-500">
+        Data
+      </p>
+
+      <h3 className="text-white">
+        {new Date(
+          booking.booking_date
+        ).toLocaleDateString()}
+      </h3>
+
+    </div>
+
+    <div>
+
+      <p className="text-zinc-500">
+        Hora
+      </p>
+
+      <h3 className="text-white">
+        {booking.booking_time}
+      </h3>
+
+    </div>
+
+  </div>
+
+)}
 
       {/* SERVIÇO */}
       <div>
 
-        <p className="text-zinc-500">
-          Serviço
-        </p>
+  <p className="text-zinc-500">
+    Serviço
+  </p>
 
-        <h3 className="text-white">
-          {booking.service}
-        </h3>
+  {editing ? (
 
-      </div>
+    <input
+      value={formData.service}
+      onChange={(e) =>
+        setFormData({
+          ...formData,
+          service:
+            e.target.value,
+        })
+      }
+      className="
+        w-full
+        bg-zinc-800
+        border
+        border-zinc-700
+        rounded-xl
+        p-3
+        text-white
+      "
+    />
+
+  ) : (
+
+    <h3 className="text-white">
+      {booking.service}
+    </h3>
+
+  )}
+
+</div>
 
       {/* NOTAS */}
       <div>
 
-        <p className="text-zinc-500">
-          Notas
-        </p>
+  <p className="text-zinc-500">
+    Notas
+  </p>
 
-        <p className="text-zinc-300">
-          {booking.notes || "-"}
-        </p>
+  {editing ? (
 
-      </div>
+    <textarea
+      rows="4"
+      value={formData.notes}
+      onChange={(e) =>
+        setFormData({
+          ...formData,
+          notes:
+            e.target.value,
+        })
+      }
+      className="
+        w-full
+        bg-zinc-800
+        border
+        border-zinc-700
+        rounded-xl
+        p-3
+        text-white
+      "
+    />
+
+  ) : (
+
+    <p className="text-zinc-300">
+      {booking.notes || "-"}
+    </p>
+
+  )}
+
+</div>
 
       {/* PREÇO */}
       <div>
 
-        <p className="text-zinc-500">
-          Valor
-        </p>
+  <p className="text-zinc-500">
+    Valor
+  </p>
 
-        <h3
-          className="
-              text-green-700
-              text-xl
-              font-bold
-              "
-        >
-          {booking.service_price}€
-        </h3>
+  {editing ? (
 
-      </div>
+    <input
+      type="number"
+      value={
+        formData.service_price
+      }
+      onChange={(e) =>
+        setFormData({
+          ...formData,
+          service_price:
+            e.target.value,
+        })
+      }
+      className="
+        w-full
+        bg-zinc-800
+        border
+        border-zinc-700
+        rounded-xl
+        p-3
+        text-white
+      "
+    />
+
+  ) : (
+
+    <h3
+      className="
+        text-green-500
+        text-xl
+        font-bold
+      "
+    >
+      {booking.service_price}€
+    </h3>
+
+  )}
+
+</div>
 
       {/* AÇÕES */}
       <div
@@ -208,6 +399,37 @@ export default function BookingCard({
           mt-2
         "
       >
+
+        {editing ? (
+
+  <>
+    <Button
+      onClick={saveBooking}
+    >
+      Guardar
+    </Button>
+
+    <Button
+      variant="secondary"
+      onClick={() =>
+        setEditing(false)
+      }
+    >
+      Cancelar
+    </Button>
+  </>
+
+) : (
+
+  <Button
+    onClick={() =>
+      setEditing(true)
+    }
+  >
+    Editar
+  </Button>
+
+)}
 
         <Button
           onClick={() =>
