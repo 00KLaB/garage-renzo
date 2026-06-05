@@ -90,6 +90,15 @@ export default function Customers() {
           placeholder="Nome"
           value={form.name}
           onChange={handleChange}
+          className="
+            bg-zinc-900
+            border
+            border-zinc-700
+            rounded-xl
+            px-4
+            py-3
+            text-white
+          "
           required
         />
 
@@ -99,6 +108,15 @@ export default function Customers() {
           placeholder="Telefone"
           value={form.phone}
           onChange={handleChange}
+          className="
+            bg-zinc-900
+            border
+            border-zinc-700
+            rounded-xl
+            px-4
+            py-3
+            text-white
+          "
         />
 
         <input
@@ -107,6 +125,15 @@ export default function Customers() {
           placeholder="Email"
           value={form.email}
           onChange={handleChange}
+          className="
+            bg-zinc-900
+            border
+            border-zinc-700
+            rounded-xl
+            px-4
+            py-3
+            text-white
+          "
         />
 
         <Button type="submit">

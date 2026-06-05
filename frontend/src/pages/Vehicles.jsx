@@ -114,6 +114,16 @@ export default function Vehicles() {
           name="customer_id"
           value={form.customer_id}
           onChange={handleChange}
+          className="
+            bg-zinc-900
+            border
+            border-zinc-700
+            rounded-xl
+            px-4
+            py-3
+            mx-8
+            text-white
+          "
           required
         >
           <option value="">
@@ -136,6 +146,16 @@ export default function Vehicles() {
           placeholder="Marca"
           value={form.brand}
           onChange={handleChange}
+          className="
+            bg-zinc-900
+            border
+            border-zinc-700
+            rounded-xl
+            px-4
+            py-3
+            mx-8
+            text-white
+          "
           required
         />
 
@@ -145,6 +165,16 @@ export default function Vehicles() {
           placeholder="Modelo"
           value={form.model}
           onChange={handleChange}
+          className="
+            bg-zinc-900
+            border
+            border-zinc-700
+            rounded-xl
+            px-4
+            py-3
+            mx-8
+            text-white
+          "
           required
         />
 
@@ -154,6 +184,16 @@ export default function Vehicles() {
           placeholder="Matrícula"
           value={form.plate}
           onChange={handleChange}
+          className="
+            bg-zinc-900
+            border
+            border-zinc-700
+            rounded-xl
+            px-4
+            py-3
+            mx-8
+            text-white
+          "
           required
         />
 
@@ -163,6 +203,16 @@ export default function Vehicles() {
           placeholder="Ano"
           value={form.year}
           onChange={handleChange}
+          className="
+            bg-zinc-900
+            border
+            border-zinc-700
+            rounded-xl
+            px-4
+            py-3
+            mx-8
+            text-white
+          "
         />
 
         <input
@@ -171,6 +221,16 @@ export default function Vehicles() {
           placeholder="KM"
           value={form.mileage}
           onChange={handleChange}
+          className="
+            bg-zinc-900
+            border
+            border-zinc-700
+            rounded-xl
+            px-4
+            py-3
+            mx-8
+            text-white
+          "
         />
 
         <input
@@ -179,10 +239,20 @@ export default function Vehicles() {
           placeholder="Combustível"
           value={form.fuel}
           onChange={handleChange}
+          className="
+            bg-zinc-900
+            border
+            border-zinc-700
+            rounded-xl
+            px-4
+            py-3
+            mx-8
+            text-white
+          "
         />
 
         <Button type="submit">
-          Criar Veículo
+          Adicionar Veículo
         </Button>
 
       </form>

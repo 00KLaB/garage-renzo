@@ -105,6 +105,16 @@ export default function Booking() {
           name="customer_id"
           value={form.customer_id}
           onChange={handleChange}
+          className="
+            flex-1
+            bg-zinc-900
+            border
+            border-zinc-700
+            rounded-xl
+            px-4
+            py-3
+            text-white
+          "
           required
         >
           <option value="">
@@ -125,6 +135,16 @@ export default function Booking() {
           name="vehicle_id"
           value={form.vehicle_id}
           onChange={handleChange}
+          className="
+            flex-1
+            bg-zinc-900
+            border
+            border-zinc-700
+            rounded-xl
+            px-4
+            py-3
+            text-white
+          "
           required
         >
           <option value="">
@@ -147,6 +167,16 @@ export default function Booking() {
           placeholder="Serviço"
           value={form.service}
           onChange={handleChange}
+          className="
+            flex-1
+            bg-zinc-900
+            border
+            border-zinc-700
+            rounded-xl
+            px-4
+            py-3
+            text-white
+          "
           required
         />
 
@@ -155,6 +185,16 @@ export default function Booking() {
           name="booking_date"
           value={form.booking_date}
           onChange={handleChange}
+          className="
+            flex-1
+            bg-zinc-900
+            border
+            border-zinc-700
+            rounded-xl
+            px-4
+            py-3
+            text-white
+          "
           required
         />
 
@@ -163,6 +203,16 @@ export default function Booking() {
           name="booking_time"
           value={form.booking_time}
           onChange={handleChange}
+          className="
+            flex-1
+            bg-zinc-900
+            border
+            border-zinc-700
+            rounded-xl
+            px-4
+            py-3
+            text-white
+          "
           required
         />
 
@@ -170,6 +220,16 @@ export default function Booking() {
           name="notes"
           placeholder="Notas"
           value={form.notes}
+          className="
+            flex-1
+            bg-zinc-900
+            border
+            border-zinc-700
+            rounded-xl
+            px-4
+            py-3
+            text-white
+          "
           onChange={handleChange}
         />
 
